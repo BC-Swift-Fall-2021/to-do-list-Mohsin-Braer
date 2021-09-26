@@ -16,16 +16,32 @@ class ToDoDetailTableViewController: UITableViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var noteView: UITextView!
     
+    var toDoItem: ToDoItem;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if toDoItem == nil
+        {
+            toDoItem = ToDoItem(name: "", date: Date(), notes: "");
+        }
+        
+        nameField.text = toDoItem.name;
+        datePicker.date = toDoItem.date;
+        noteView.text = toDoItem.notes;
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+        
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        toDoItem = ToDoItem(name: nameField.text!, date: datePicker.date, notes: noteView.text);
+    }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         

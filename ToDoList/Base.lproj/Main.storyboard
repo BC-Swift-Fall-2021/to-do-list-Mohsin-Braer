@@ -47,6 +47,11 @@
                         <barButtonItem title="Item" id="XYa-wF-SbM"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="4CO-bn-vEW">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="4as-HS-8Al">
+                            <connections>
+                                <action selector="editBarButtonPressed:" destination="BYZ-38-t0r" id="OMB-CM-Ie0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="O1j-IR-9QB">
                             <connections>
                                 <segue destination="d6J-S6-rfg" kind="presentation" identifier="AddDetail" id="qkq-mI-kVl"/>
@@ -55,6 +60,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addBarButton" destination="O1j-IR-9QB" id="44m-lA-DZl"/>
+                        <outlet property="editBarButton" destination="4as-HS-8Al" id="G4h-XV-xFW"/>
                         <outlet property="tableView" destination="UhY-UB-0cD" id="MWb-Jr-LnD"/>
                     </connections>
                 </viewController>
@@ -144,7 +151,11 @@
                                 <action selector="cancelButtonPressed:" destination="yn9-fb-6gc" id="uqn-sD-Owb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sxb-rZ-68v"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sxb-rZ-68v">
+                            <connections>
+                                <segue destination="CRO-CK-IaP" kind="unwind" unwindAction="unwindFromDetailWithSegue:" id="ZnU-k2-uJe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelBarButton" destination="56t-VG-bDk" id="XQV-6A-nPJ"/>
@@ -155,6 +166,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EwJ-np-LNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="CRO-CK-IaP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2813.04347826087" y="79.6875"/>
         </scene>
