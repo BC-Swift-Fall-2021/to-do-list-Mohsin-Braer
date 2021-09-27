@@ -91,7 +91,7 @@ class ToDoDetailTableViewController: UITableViewController {
     
     
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        date.label.text = DateFormatter.string(from: sender.date);
+        dateLabel.text = dateFormatter.string(from: sender.date);
         
     }
     
