@@ -7,6 +7,14 @@
 
 import UIKit
 
+private let dateFormatter: DateFormatter = {
+    print("Date Formatter created");
+    let dateFormatter = DateFormatter();
+    dateFormatter.dateStyle = .short;
+    dateFormatter.timeStyle = .short;
+    return dateFormatter;
+}()
+
 class ToDoDetailTableViewController: UITableViewController {
 
     
@@ -33,7 +41,7 @@ class ToDoDetailTableViewController: UITableViewController {
         if toDoItem == nil
         {
             //toDoItem = ToDoItem(name: "", date: Date(), notes: "");
-            toDoItem = ToDoItem(name: "", date: Date(), notes: "", reminderSet: false);
+            toDoItem = ToDoItem(name: "", date: Date().addingTimeInterval(24*60*60), notes: "", reminderSet: false);
         }
         
         updateUserInterface();
@@ -54,6 +62,7 @@ class ToDoDetailTableViewController: UITableViewController {
         noteView.text = toDoItem.notes;
         reminderSwitch.isOn = toDoItem.reminderSet;
         dateLabel.textColor = (reminderSwitch.isOn ? .black : .gray);
+        dateLabel.text = dateFormatter.string(from: toDoItem.date);
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,6 +90,10 @@ class ToDoDetailTableViewController: UITableViewController {
     }
     
     
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        date.label.text = DateFormatter.string(from: sender.date);
+        
+    }
     
 
 
