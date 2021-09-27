@@ -16,19 +16,27 @@ class ToDoDetailTableViewController: UITableViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var noteView: UITextView!
     
-    var toDoItem: ToDoItem;
+    @IBOutlet weak var reminderSwitch: UISwitch!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    
+    
+    var toDoItem: ToDoItem!;
+    let datePickerIndexPath = IndexPath(row: 1, section: 1);
+    let notesTextIndexPath = IndexPath(row: 0, section: 2);
+    let notesRowHeight: CGFloat = 200;
+    let defaultRowHeight: CGFloat = 44;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if toDoItem == nil
         {
-            toDoItem = ToDoItem(name: "", date: Date(), notes: "");
+            //toDoItem = ToDoItem(name: "", date: Date(), notes: "");
+            toDoItem = ToDoItem(name: "", date: Date(), notes: "", reminderSet: false);
         }
         
-        nameField.text = toDoItem.name;
-        datePicker.date = toDoItem.date;
-        noteView.text = toDoItem.notes;
+        updateUserInterface();
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,9 +46,18 @@ class ToDoDetailTableViewController: UITableViewController {
         
     }
     
+   
+    func updateUserInterface()
+    {
+        nameField.text = toDoItem.name;
+        datePicker.date = toDoItem.date;
+        noteView.text = toDoItem.notes;
+        reminderSwitch.isOn = toDoItem.reminderSet;
+        dateLabel.textColor = (reminderSwitch.isOn ? .black : .gray);
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        toDoItem = ToDoItem(name: nameField.text!, date: datePicker.date, notes: noteView.text);
+        toDoItem = ToDoItem(name: nameField.text!, date: datePicker.date, notes: noteView.text, reminderSet: reminderSwitch.isOn);
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -53,6 +70,17 @@ class ToDoDetailTableViewController: UITableViewController {
         }
         
     }
+    
+    
+    @IBAction func reminderSwitchChanged(_ sender: UISwitch) {
+        dateLabel.textColor = (reminderSwitch.isOn ? .black : .gray);
+        tableView.beginUpdates();
+        tableView.endUpdates();
+
+        
+    }
+    
+    
     
 
 
@@ -124,4 +152,18 @@ class ToDoDetailTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension ToDoDetailTableViewController{
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath{
+            case datePickerIndexPath:
+                return reminderSwitch.isOn ? datePicker.frame.height : 0;
+            case notesTextIndexPath:
+                return notesRowHeight;
+        default:
+            return defaultRowHeight;
+        
+        }
+    }
 }
