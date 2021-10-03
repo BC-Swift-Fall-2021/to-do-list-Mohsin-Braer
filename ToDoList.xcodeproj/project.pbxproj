@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E921E6F2709E23200DD7AE7 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E921E6E2709E23200DD7AE7 /* ListTableViewCell.swift */; };
 		4E9BA05726FE8F1600F90C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA05626FE8F1600F90C63 /* AppDelegate.swift */; };
 		4E9BA05926FE8F1600F90C63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA05826FE8F1600F90C63 /* SceneDelegate.swift */; };
 		4E9BA05B26FE8F1600F90C63 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA05A26FE8F1600F90C63 /* ToDoListViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E921E6E2709E23200DD7AE7 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		4E9BA05326FE8F1600F90C63 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E9BA05626FE8F1600F90C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E9BA05826FE8F1600F90C63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				4E9BA08827010E0600F90C63 /* ToDoItem.swift */,
 				4E9BA05A26FE8F1600F90C63 /* ToDoListViewController.swift */,
 				4E9BA08626FFD1AE00F90C63 /* ToDoDetailTableViewController.swift */,
+				4E921E6E2709E23200DD7AE7 /* ListTableViewCell.swift */,
 				4E9BA05C26FE8F1600F90C63 /* Main.storyboard */,
 				4E9BA05F26FE8F1800F90C63 /* Assets.xcassets */,
 				4E9BA06126FE8F1800F90C63 /* LaunchScreen.storyboard */,
@@ -269,6 +272,7 @@
 				4E9BA08927010E0600F90C63 /* ToDoItem.swift in Sources */,
 				4E9BA08726FFD1AE00F90C63 /* ToDoDetailTableViewController.swift in Sources */,
 				4E9BA05926FE8F1600F90C63 /* SceneDelegate.swift in Sources */,
+				4E921E6F2709E23200DD7AE7 /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
