@@ -38,6 +38,9 @@ class ToDoDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let notificationCenter = NotificationCenter.default;
+        notificationCenter.addObserver(self, selector: #selector(appActiveNotification), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false;
         self.view.addGestureRecognizer(tap);
@@ -59,6 +62,11 @@ class ToDoDetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         
+    }
+    
+    @objc func appActiveNotification(){
+        print("The app just came to the foreground - cool!");
+        updateReminderSwitch();
     }
     
    
